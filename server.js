@@ -7,8 +7,7 @@ const port = process.env.PORT || 3000;
 
 hbs.registerPartials(__dirname + "/views/partials");
 
-hbs.registerHelper("func", () => {return 10});
-hbs.registerHelper("func2", (x) => x + 1);
+hbs.registerHelper("year", () => new Date().getFullYear());
 
 app.set({"view engine": "hbs"});
 
@@ -30,6 +29,10 @@ app.use((req, res, next) => {
 //     res.render("maintenanse.hbs");
 // });
 
+app.get("/projects", (req, res) => {
+    res.render("projects.hbs", {title: "Projects"});
+});
+
 app.get("/", (req, res) => {
     // res.send("<h1>Hello Express!</h1>");
 
@@ -37,13 +40,13 @@ app.get("/", (req, res) => {
     //     name: "Leonemsolis",
     //     likes: ["Sport", "Chess", "Programming"]
     // });
-    res.render("home.hbs", {title: "Home page", year: 2017, welcome: "Welcome to my site!"});
+    res.render("home.hbs", {title: "Home page", welcome: "Welcome to my site!"});
 });
 
 app.use(express.static(__dirname + "/public"));
 
 app.get("/about", (req, res) => {
-    res.render("about.hbs", {title: "About page", year: 2016});
+    res.render("about.hbs", {title: "About page"});
 });
 
 app.get("/bad", (req, res) => {
