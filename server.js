@@ -26,9 +26,9 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use((req, res, next) => {
-    res.render("maintenanse.hbs");
-});
+// app.use((req, res, next) => {
+//     res.render("maintenanse.hbs");
+// });
 
 app.get("/", (req, res) => {
     // res.send("<h1>Hello Express!</h1>");
